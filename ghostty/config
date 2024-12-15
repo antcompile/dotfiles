@@ -6,4 +6,7 @@ window-decoration = true
 # keybind = global:cmd+/=toggle_quick_terminal
 macos-option-as-alt = true
 # background-opacity = 0.7
-# background-blur-radius = 20 
+# background-blur-radius = 20
+
+# open tmux + nushell at startup
+command = zsh --login -c "if command -v tmux >/dev/null 2>&1; then tmux new-session -A -s atr || n;u else zsh; fi"

@@ -23,6 +23,10 @@ source $ZDOTDIR/.zshrc
 * brew bundler install pointing to this file should work
 * brew bundler dump should create the file (--force)
 * brew bundler cleanup should update the file (--force)
+
+#### Tmux Plugins (TPM) (bar etc...)
+* git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+* prefix capital I or prefix capital U then kill-server to install
 #### Manually
 * brew install carapace
 * curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh

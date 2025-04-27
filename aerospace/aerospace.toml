@@ -190,7 +190,7 @@ alt-y = 'exec-and-forget open -a /System/Library/CoreServices/Finder.app'
 alt-a = 'exec-and-forget open -a /Applications/Arc.app'
 alt-o = 'exec-and-forget open -a /Applications/Obsidian.app'
 alt-b = 'exec-and-forget open -a /Applications/Google\ Chrome.app'
-alt-c = 'exec-and-forget open -a /Applications/Visual\ Studio\ Code.app'
+alt-c = 'exec-and-forget open -a /Applications/Cursor.app'
 alt-w = 'exec-and-forget open -a /Applications/Whatsapp.app'
 alt-s = 'exec-and-forget open -a /Applications/Spotify.app'
 

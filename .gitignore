@@ -6,3 +6,10 @@ history.txt
 zshrc/.zsh_sessions
 zshrc/.zcompdump
 zshrc/.zsh_history
+.stowrc
+nvim/plugin/
+
+# Secrets file should never be tracked
+.zshrc.secrets
+zshrc/.zshrc.secrets
+~/.zshrc.secrets

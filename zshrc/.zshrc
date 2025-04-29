@@ -163,6 +163,11 @@ export DBT_USER=ATRAD
 export DBT_DATABASE_SUFFIX=TEST_$DBT_USER
 export GIT_TOKEN=YOUR_GITHUB_TOKEN_HERE
 
+# Source secrets file if it exists (not tracked in git)
+if [ -f "$HOME/.zshrc.secrets" ]; then
+  source "$HOME/.zshrc.secrets"
+fi
+
 function dbt_mode {
 source ./venv/bin/activate
 dbt debug

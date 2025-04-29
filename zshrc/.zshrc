@@ -58,16 +58,13 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
-# GO
-export GOPATH='~/go'
-
 # VIM
 alias v="~/.nix-profile/bin/nvim"
 
 # Nmap
 alias nm="nmap -sC -sV -oN nmap"
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/~/.vimpkg/bin:${GOPATH}/bin:/~/.cargo/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/~/.vimpkg//bin:/~/.cargo/bin
 
 alias cl='clear'
 
@@ -107,6 +104,7 @@ alias server='python -m http.server 4445'
 alias tunnel='ngrok http 4445'
 alias fuzz='ffuf -w ~/hacking/SecLists/content_discovery_all.txt -mc all -u'
 alias gr='~/go/src/github.com/tomnomnom/gf/gf'
+alias pr-squash="git fetch; git reset --mixed origin/main; git merge --squash HEAD@{1}"
 
 ### FZF ###
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
@@ -154,3 +152,31 @@ export XDG_CONFIG_HOME="$HOME/.config"
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
 eval "$(direnv hook zsh)"
+
+# Work Aliases
+export ECS_REPOSITORY=791259062566.dkr.ecr.eu-west-1.amazonaws.com
+export CODE_ARTIFACT_NUGET_SOURCE_URL=https://cko-packages-791259062566.d.codeartifact.eu-west-1.amazonaws.com/nuget/cko-packages/v3/index.json
+export NODE_EXTRA_CA_CERTS="/Users/anthonytr/caadmin.netskope.com.pem"
+export DATADOG_API_KEY="YOUR_DATADOG_API_KEY_HERE"
+. "$HOME/.cargo/env"
+export DBT_USER=ATRAD
+export DBT_DATABASE_SUFFIX=TEST_$DBT_USER
+export GIT_TOKEN=YOUR_GITHUB_TOKEN_HERE
+
+function dbt_mode {
+source ./venv/bin/activate
+dbt debug
+}
+alias dbt_mode_off='deactivate'
+function dbt_refresh {
+dbt run --full-refresh --target ci
+}
+function dbt_nuke {
+dbt run-operation setup_database --target ci --vars "{ 'drop': true }"
+dbt run-operation setup_database --target ci
+}
+
+export DBT_USER_ROLE=ANTHONY_TRAD
+
+export GOPATH='/Users/anthonytr/go'
+export PATH=$PATH:$GOPATH/bin

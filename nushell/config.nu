@@ -944,4 +944,4 @@ source ~/.cache/carapace/init.nu
 source ~/.local/share/atuin/init.nu
 use ~/.cache/starship/init.nu
 
-def pr-squash [] { git fetch; git reset --mixed origin/main; git merge --squash HEAD@{1} }; 
+def pr-squash [branch: string = "main"] { git fetch; git reset --mixed $"origin/($branch)"; git merge --squash HEAD@{1} }; 

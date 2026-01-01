@@ -1,4 +1,4 @@
-theme = catppuccin-mocha
+theme = Catppuccin Mocha
 font-size = 19
 background-blur-radius = 20
 mouse-hide-while-typing = true
@@ -9,4 +9,4 @@ macos-option-as-alt = true
 # background-blur-radius = 20
 
 # open tmux + nushell at startup
-command = zsh --login -c "if command -v tmux >/dev/null 2>&1; then tmux new-session -A -s atr || n;u else zsh; fi"
+command = zsh --login -c "if command -v tmux >/dev/null 2>&1; then tmux new-session -A -s atr || nu else zsh; fi"

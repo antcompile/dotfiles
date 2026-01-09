@@ -193,6 +193,7 @@ alt-b = 'exec-and-forget open -a /Applications/Brave\ Browser.app'
 alt-c = 'exec-and-forget open -a /Applications/Cursor.app'
 alt-w = 'exec-and-forget open -a /Applications/Whatsapp.app'
 alt-s = 'exec-and-forget open -a /Applications/Spotify.app'
+alt-f = 'exec-and-forget open -a /System/Library/CoreServices/Finder.app'
 
 
 # 'service' binding mode declaration.

@@ -98,19 +98,21 @@ use std "path add"
 # $env.PATH = ($env.PATH | uniq)
 path add /opt/homebrew/bin
 path add /run/current-system/sw/bin
+path add ($env.HOME | path join ".local" "bin")
 
-# To load from a custom file you can use:
-# source ($nu.default-config-dir | path join 'custom.nu')
+# Corporate certificates for Node.js (Claude Code CLI, etc.)
+$env.NODE_EXTRA_CA_CERTS = ($env.HOME | path join "corporate-certs.pem")
 
 # Cant use the home dir (~ or $HOME) here for some reason, hardcoding it...
+let home = $env.HOME
 
-mkdir Users/anthonytr/.cache/starship
-starship init nu | save -f Users/anthonytr/.cache/starship/init.nu
-zoxide init nushell | save -f Users/anthonytr/.zoxide.nu
+mkdir ($home | path join ".cache" "starship")
+starship init nu | save -f ($home | path join ".cache" "starship" "init.nu")
+zoxide init nushell | save -f ($home | path join ".zoxide.nu")
 
-$env.STARSHIP_CONFIG = 'Users/anthonytr/.config/starship/starship.toml'
-$env.NIX_CONF_DIR = 'Users/anthonytr/.config/nix'
+$env.STARSHIP_CONFIG = ($home | path join ".config" "starship" "starship.toml")
+$env.NIX_CONF_DIR = ($home | path join ".config" "nix")
 $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
-mkdir Users/anthonytr/.cache/carapace
-carapace _carapace nushell | save --force Users/anthonytr/.cache/carapace/init.nu
+mkdir ($home | path join ".cache" "carapace")
+carapace _carapace nushell | save --force ($home | path join ".cache" "carapace" "init.nu")
 

@@ -938,6 +938,7 @@ source ~/.config/nushell/env.nu
 source ~/.zoxide.nu
 source ~/.cache/carapace/init.nu
 source ~/.local/share/atuin/init.nu
+source /Users/anthony.trad/Git/perso/dotfiles/nushell/aws-login.nu
 use ~/.cache/starship/init.nu
 
-def pr-squash [branch: string = "main"] { git fetch; git reset --mixed $"origin/($branch)"; git merge --squash HEAD@{1} }; 
+def pr-squash [branch: string = "main"] { git fetch; git reset --mixed $"origin/($branch)"; git merge --squash HEAD@{1} };

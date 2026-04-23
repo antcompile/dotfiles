@@ -3,7 +3,7 @@
 # version = "0.95.0"
 
 def create_left_prompt [] {
-    let dir = match (do { $env.PWD | path relative-to $nu.home-path }) {
+    let dir = match (do { $env.PWD | path relative-to $nu.home-dir }) {
         null => $env.PWD
         '' => '~'
         $relative_pwd => ([~ $relative_pwd] | path join)
@@ -100,8 +100,10 @@ path add /opt/homebrew/bin
 path add /run/current-system/sw/bin
 path add ($env.HOME | path join ".local" "bin")
 
-# Corporate certificates for Node.js (Claude Code CLI, etc.)
-$env.NODE_EXTRA_CA_CERTS = ($env.HOME | path join "corporate-certs.pem")
+# Corporate certificates (Node.js + Python/requests)
+let corporate_ca_bundle = ($env.HOME | path join "corporate-certs.pem")
+$env.NODE_EXTRA_CA_CERTS = $corporate_ca_bundle
+$env.REQUESTS_CA_BUNDLE = $corporate_ca_bundle
 
 # Cant use the home dir (~ or $HOME) here for some reason, hardcoding it...
 let home = $env.HOME
@@ -109,6 +111,8 @@ let home = $env.HOME
 mkdir ($home | path join ".cache" "starship")
 starship init nu | save -f ($home | path join ".cache" "starship" "init.nu")
 zoxide init nushell | save -f ($home | path join ".zoxide.nu")
+mkdir ($home | path join ".local" "share" "atuin")
+atuin init nu | save -f ($home | path join ".local" "share" "atuin" "init.nu")
 
 $env.STARSHIP_CONFIG = ($home | path join ".config" "starship" "starship.toml")
 $env.NIX_CONF_DIR = ($home | path join ".config" "nix")

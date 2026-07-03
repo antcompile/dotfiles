@@ -14,6 +14,12 @@ nvim/plugin/
 zshrc/.zshrc.secrets
 ~/.zshrc.secrets
 
+# Claude Code local/machine state (permissions cache, not shareable config)
+claude/.claude/settings.local.json
+
+# Strix holds an LLM API key
+strix/.strix/cli-config.json
+
 # Rotating brew backups (local-only, regenerated daily)
 launchd/brew-backups/*
 !launchd/brew-backups/.gitkeep

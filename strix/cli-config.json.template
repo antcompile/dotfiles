@@ -1,0 +1,9 @@
+{
+  "_comment": "Copy to ~/.strix/cli-config.json - this file is not tracked in git",
+  "llm": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-5",
+    "apiKey": "real_llm_api_key_here"
+  },
+  "perplexityApiKey": "real_perplexity_api_key_here"
+}

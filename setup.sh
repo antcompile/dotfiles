@@ -3,6 +3,12 @@ mkdir ~/.config
 chmod +x ~/.config
 stow .
 
+# Claude Code config (~/.claude) lives outside ~/.config, so it needs its own target
+stow --target="$HOME" claude
+
+# no-mistakes global config (~/.no-mistakes) also lives outside ~/.config
+stow --target="$HOME" no-mistakes
+
 # Install the daily brew update/backup launchd agent
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PLIST_DEST="$HOME/Library/LaunchAgents/com.atrad.brew-daily.plist"

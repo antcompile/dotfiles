@@ -1,0 +1,7 @@
+{
+    "mcpServers": {
+        "codebase-memory-mcp": {
+            "command": "/opt/homebrew/lib/node_modules/codebase-memory-mcp/bin/codebase-memory-mcp"
+        }
+    }
+}

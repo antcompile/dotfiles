@@ -11,3 +11,15 @@ Host bastion
     User ec2-user
     Hostname bastion.domain.com
     IdentityFile ~/.ssh/id_rsa
+
+Host github-personal
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_personal
+    IdentitiesOnly yes
+
+Host github-work
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_work
+    IdentitiesOnly yes

@@ -147,41 +147,18 @@ fv() { nvim "$(find . -type f -not -path '*/.*' | fzf)" }
  fi
  # End Nix
 
+. "$HOME/.cargo/env"
+
 export XDG_CONFIG_HOME="$HOME/.config"
 
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
 eval "$(direnv hook zsh)"
 
-# Work Aliases
-export ECS_REPOSITORY=791259062566.dkr.ecr.eu-west-1.amazonaws.com
-export CODE_ARTIFACT_NUGET_SOURCE_URL=https://cko-packages-791259062566.d.codeartifact.eu-west-1.amazonaws.com/nuget/cko-packages/v3/index.json
-export NODE_EXTRA_CA_CERTS="$HOME/corporate-certs.pem"
-export DATADOG_API_KEY="YOUR_DATADOG_API_KEY_HERE"
-. "$HOME/.cargo/env"
-export DBT_USER=ATRAD
-export DBT_DATABASE_SUFFIX=TEST_$DBT_USER
-export GIT_TOKEN=YOUR_GITHUB_TOKEN_HERE
-
 # Source secrets file if it exists (not tracked in git)
 if [ -f "$HOME/.zshrc.secrets" ]; then
   source "$HOME/.zshrc.secrets"
 fi
-
-function dbt_mode {
-source ./venv/bin/activate
-dbt debug
-}
-alias dbt_mode_off='deactivate'
-function dbt_refresh {
-dbt run --full-refresh --target ci
-}
-function dbt_nuke {
-dbt run-operation setup_database --target ci --vars "{ 'drop': true }"
-dbt run-operation setup_database --target ci
-}
-
-export DBT_USER_ROLE=ANTHONY_TRAD
 
 export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH/bin

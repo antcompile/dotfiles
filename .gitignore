@@ -13,3 +13,7 @@ nvim/plugin/
 .zshrc.secrets
 zshrc/.zshrc.secrets
 ~/.zshrc.secrets
+
+# Rotating brew backups (local-only, regenerated daily)
+launchd/brew-backups/*
+!launchd/brew-backups/.gitkeep

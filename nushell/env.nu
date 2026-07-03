@@ -100,10 +100,12 @@ path add /opt/homebrew/bin
 path add /run/current-system/sw/bin
 path add ($env.HOME | path join ".local" "bin")
 
-# Corporate certificates (Node.js + Python/requests)
-let corporate_ca_bundle = ($env.HOME | path join "corporate-certs.pem")
-$env.NODE_EXTRA_CA_CERTS = $corporate_ca_bundle
-$env.REQUESTS_CA_BUNDLE = $corporate_ca_bundle
+# Android SDK + JDK for React Native / Expo builds
+$env.ANDROID_HOME = ($env.HOME | path join "Library" "Android" "sdk")
+$env.JAVA_HOME = "/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+path add $"($env.ANDROID_HOME)/emulator"
+path add $"($env.ANDROID_HOME)/platform-tools"
+path add $"($env.JAVA_HOME)/bin"
 
 # Cant use the home dir (~ or $HOME) here for some reason, hardcoding it...
 let home = $env.HOME

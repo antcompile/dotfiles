@@ -39,3 +39,9 @@ source $ZDOTDIR/.zshrc
 * starship init nu | save ~/.cache/starship/init.nu
 * brew install aerpospace
 * brew tap FelixKratz/formulae THEN brew install borders (JankyBorders)
+
+### Daily brew update + backup (launchd)
+* `setup.sh` installs a launchd agent (`launchd/com.atrad.brew-daily.plist.template` → `~/Library/LaunchAgents/com.atrad.brew-daily.plist`) that runs `launchd/brew-daily.sh` on every login/startup, at most once per day
+* It runs `brew update`, backs up the current package list to `launchd/brew-backups/Brewfile.<mon..sun>` (rotates weekly, gitignored), then runs `brew upgrade`
+* If any step fails you'll get a macOS notification — check `~/Library/Logs/brew-daily.log` for details
+* To restore a backup: `brew bundle install --file=launchd/brew-backups/Brewfile.<day>`

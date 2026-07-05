@@ -895,7 +895,6 @@ alias c = clear
 alias ll = ls -l
 alias lt = eza --tree --level=2 --long --icons --git
 alias v = nvim
-alias hms = /nix/store/6kc5srg83nkyg21am089xx7pvq44kn2c-home-manager/bin/home-manager switch
 alias as = aerospace
 
 def ff [] {
@@ -920,25 +919,10 @@ alias gcoall = git checkout -- .
 alias gr = git remote
 alias gre = git reset
 
-# K8s
-alias k = kubectl
-alias ka = kubectl apply -f
-alias kg = kubectl get
-alias kd = kubectl describe
-alias kdel = kubectl delete
-alias kl = kubectl logs
-alias kgpo = kubectl get pod
-alias kgd = kubectl get deployments
-alias kc = kubectx
-alias kns = kubens
-alias kl = kubectl logs -f
-alias ke = kubectl exec -it
-
 source ~/.config/nushell/env.nu
 source ~/.zoxide.nu
 source ~/.cache/carapace/init.nu
 source ~/.local/share/atuin/init.nu
-source /Users/anthony.trad/Git/perso/dotfiles/nushell/aws-login.nu
 use ~/.cache/starship/init.nu
 
 def pr-squash [branch: string = "main"] { git fetch; git reset --mixed $"origin/($branch)"; git merge --squash HEAD@{1} };

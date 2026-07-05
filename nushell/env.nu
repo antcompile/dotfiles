@@ -117,7 +117,6 @@ mkdir ($home | path join ".local" "share" "atuin")
 atuin init nu | save -f ($home | path join ".local" "share" "atuin" "init.nu")
 
 $env.STARSHIP_CONFIG = ($home | path join ".config" "starship" "starship.toml")
-$env.NIX_CONF_DIR = ($home | path join ".config" "nix")
 $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
 mkdir ($home | path join ".cache" "carapace")
 carapace _carapace nushell | save --force ($home | path join ".cache" "carapace" "init.nu")

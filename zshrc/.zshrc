@@ -5,7 +5,6 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit
 compinit
-source <(kubectl completion zsh)
 complete -C '/usr/local/bin/aws_completer' aws
 
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -59,7 +58,7 @@ alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
 # VIM
-alias v="~/.nix-profile/bin/nvim"
+alias v="nvim"
 
 # Nmap
 alias nm="nmap -sC -sV -oN nmap"
@@ -67,23 +66,6 @@ alias nm="nmap -sC -sV -oN nmap"
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/~/.vimpkg//bin:/~/.cargo/bin
 
 alias cl='clear'
-
-# K8S
-export KUBECONFIG=~/.kube/config
-alias k="kubectl"
-alias ka="kubectl apply -f"
-alias kg="kubectl get"
-alias kd="kubectl describe"
-alias kdel="kubectl delete"
-alias kl="kubectl logs"
-alias kgpo="kubectl get pod"
-alias kgd="kubectl get deployments"
-alias kc="kubectx"
-alias kns="kubens"
-alias kl="kubectl logs -f"
-alias ke="kubectl exec -it"
-alias kcns='kubectl config set-context --current --namespace'
-alias podname=''
 
 # HTTP requests with xh!
 alias http="xh"
@@ -96,14 +78,6 @@ alias l="eza -l --icons --git -a"
 alias lt="eza --tree --level=2 --long --icons --git"
 alias ltree="eza --tree --level=2  --icons --git"
 
-# SEC STUFF
-alias gobust='gobuster dir --wordlist ~/security/wordlists/diccnoext.txt --wildcard --url'
-alias dirsearch='python dirsearch.py -w db/dicc.txt -b -u'
-alias massdns='~/hacking/tools/massdns/bin/massdns -r ~/hacking/tools/massdns/lists/resolvers.txt -t A -o S bf-targets.txt -w livehosts.txt -s 4000'
-alias server='python -m http.server 4445'
-alias tunnel='ngrok http 4445'
-alias fuzz='ffuf -w ~/hacking/SecLists/content_discovery_all.txt -mc all -u'
-alias gr='~/go/src/github.com/tomnomnom/gf/gf'
 alias pr-squash="git fetch; git reset --mixed origin/main; git merge --squash HEAD@{1}"
 
 ### FZF ###
@@ -111,12 +85,6 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PATH=$HOME/.local/bin:/opt/homebrew/bin:$PATH
-
-alias mat='osascript -e "tell application \"System Events\" to key code 126 using {command down}" && tmux neww "cmatrix"'
-
-# Nix!
-export NIX_CONF_DIR=$HOME/.config/nix
-export PATH=/run/current-system/sw/bin:$PATH
 
 function ranger {
 	local IFS=$'\t\n'
@@ -140,12 +108,6 @@ cx() { cd "$@" && l; }
 fcd() { cd "$(find . -type d -not -path '*/.*' | fzf)" && l; }
 f() { echo "$(find . -type f -not -path '*/.*' | fzf)" | pbcopy }
 fv() { nvim "$(find . -type f -not -path '*/.*' | fzf)" }
-
- # Nix
- if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-	 . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
- fi
- # End Nix
 
 . "$HOME/.cargo/env"
 

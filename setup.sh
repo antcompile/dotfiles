@@ -12,6 +12,10 @@ stow --target="$HOME" no-mistakes
 # zsh dotfiles (~/.zprofile, ~/.zshrc.secrets.template) live directly in $HOME
 stow --target="$HOME" zshrc
 
+# pi coding agent (~/.pi/agent): models.json routes through the LiteLLM gateway.
+# --no-folding so pi's runtime files (sessions, auth.json) stay out of the repo.
+stow --no-folding --target="$HOME" pi
+
 # Install the daily brew update/backup launchd agent
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PLIST_DEST="$HOME/Library/LaunchAgents/com.atrad.brew-daily.plist"

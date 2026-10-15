@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "serena": {
+      "command": "~/.local/bin/serena",
+      "args": ["start-mcp-server", "--context=agent", "--project-from-cwd"],
+      "description": "Semantic code navigation and editing (symbols, references, rename) via language servers"
+    }
+  }
+}

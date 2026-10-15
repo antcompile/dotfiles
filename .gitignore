@@ -50,3 +50,8 @@ claude/.claude/skills/.trash
 .DS_Store
 .idea
 claude/.claude/skills/synced
+
+# pi runtime state
+pi/.pi/agent/sessions
+pi/.pi/agent/auth.json
+.serena

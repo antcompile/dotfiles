@@ -1,0 +1,16 @@
+{
+  "$schema": "https://pi.dev/schemas/settings.schema.json",
+  "defaultProvider": "litellm",
+  "defaultModel": "claude-opus-5-5",
+  "defaultThinkingLevel": "medium",
+  "skills": [
+    "~/.claude/skills",
+    "!**/.trash/**",
+    "!**/gitnexus-*"
+  ],
+  "lastChangelogVersion": "1.2.0",
+  "packages": [
+    "npm:pi-subagents@0.78.0",
+    "npm:pi-workspace-history@0.5.0"
+  ]
+}

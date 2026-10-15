@@ -1,0 +1,7 @@
+onboarding = false
+
+[terminal]
+default_shell = "/opt/homebrew/bin/nu"
+
+[keys]
+prefix = "ctrl+a"

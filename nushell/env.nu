@@ -114,7 +114,9 @@ mkdir ($home | path join ".cache" "starship")
 starship init nu | save -f ($home | path join ".cache" "starship" "init.nu")
 zoxide init nushell | save -f ($home | path join ".zoxide.nu")
 mkdir ($home | path join ".local" "share" "atuin")
-atuin init nu | save -f ($home | path join ".local" "share" "atuin" "init.nu")
+atuin init nu
+| str replace -ra 'name: atuin(\s+modifier: none\s+keycode: up)' 'name: atuin_up${1}'
+| save -f ($home | path join ".local" "share" "atuin" "init.nu")
 
 $env.STARSHIP_CONFIG = ($home | path join ".config" "starship" "starship.toml")
 $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional

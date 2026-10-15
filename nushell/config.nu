@@ -274,7 +274,16 @@ $env.config = {
         pre_prompt: [{ null }] # run before the prompt is shown
         pre_execution: [{ null }] # run before the repl input is run
         env_change: {
-            PWD: [{|before, after| null }] # run if the PWD environment is different since the last repl input
+            PWD: [
+                {|before, after| null } # run if the PWD environment is different since the last repl input
+                { ||
+                    if (which direnv | is-empty) {
+                        return
+                    }
+
+                    direnv export json | from json | default {} | load-env
+                }
+            ]
         }
         display_output: "if (term size).columns >= 100 { table -e } else { table }" # run to display the output of a pipeline
         command_not_found: { null } # return an error message when a command is not found
@@ -560,7 +569,7 @@ $env.config = {
             event: { edit: movetolinestart }
         }
         {
-            name: move_to_line_start
+            name: move_to_line_start_ctrl_a
             modifier: control
             keycode: char_a
             mode: [emacs, vi_normal, vi_insert]
@@ -579,7 +588,7 @@ $env.config = {
             }
         }
         {
-            name: move_to_line_end_or_take_history_hint
+            name: move_to_line_end_or_take_history_hint_ctrl_e
             modifier: control
             keycode: char_e
             mode: [emacs, vi_normal, vi_insert]
@@ -591,7 +600,7 @@ $env.config = {
             }
         }
         {
-            name: move_to_line_start
+            name: move_to_line_start_ctrl_home
             modifier: control
             keycode: home
             mode: [emacs, vi_normal, vi_insert]
@@ -605,7 +614,7 @@ $env.config = {
             event: { edit: movetolineend }
         }
         {
-            name: move_up
+            name: move_up_ctrl_p
             modifier: control
             keycode: char_p
             mode: [emacs, vi_normal, vi_insert]
@@ -617,7 +626,7 @@ $env.config = {
             }
         }
         {
-            name: move_down
+            name: move_down_ctrl_t
             modifier: control
             keycode: char_t
             mode: [emacs, vi_normal, vi_insert]
@@ -636,7 +645,7 @@ $env.config = {
             event: { edit: backspace }
         }
         {
-            name: delete_one_word_backward
+            name: delete_one_word_backward_ctrl_backspace
             modifier: control
             keycode: backspace
             mode: [emacs, vi_insert]
@@ -650,28 +659,28 @@ $env.config = {
             event: { edit: delete }
         }
         {
-            name: delete_one_character_forward
+            name: delete_one_character_forward_ctrl_delete
             modifier: control
             keycode: delete
             mode: [emacs, vi_insert]
             event: { edit: delete }
         }
         {
-            name: delete_one_character_backward
+            name: delete_one_character_backward_ctrl_h
             modifier: control
             keycode: char_h
             mode: [emacs, vi_insert]
             event: { edit: backspace }
         }
         {
-            name: delete_one_word_backward
+            name: delete_one_word_backward_ctrl_w
             modifier: control
             keycode: char_w
             mode: [emacs, vi_insert]
             event: { edit: backspaceword }
         }
         {
-            name: move_left
+            name: move_left_vi_backspace
             modifier: none
             keycode: backspace
             mode: vi_normal
@@ -685,7 +694,7 @@ $env.config = {
             event: { send: enter }
         }
         {
-            name: move_left
+            name: move_left_ctrl_b
             modifier: control
             keycode: char_b
             mode: emacs
@@ -697,7 +706,7 @@ $env.config = {
             }
         }
         {
-            name: move_right_or_take_history_hint
+            name: move_right_or_take_history_hint_ctrl_f
             modifier: control
             keycode: char_f
             mode: emacs
@@ -759,14 +768,14 @@ $env.config = {
             event: { edit: swapgraphemes }
         }
         {
-            name: move_one_word_left
+            name: move_one_word_left_alt_left
             modifier: alt
             keycode: left
             mode: emacs
             event: { edit: movewordleft }
         }
         {
-            name: move_one_word_right_or_take_history_hint
+            name: move_one_word_right_or_take_history_hint_alt_right
             modifier: alt
             keycode: right
             mode: emacs
@@ -778,14 +787,14 @@ $env.config = {
             }
         }
         {
-            name: move_one_word_left
+            name: move_one_word_left_alt_b
             modifier: alt
             keycode: char_b
             mode: emacs
             event: { edit: movewordleft }
         }
         {
-            name: move_one_word_right_or_take_history_hint
+            name: move_one_word_right_or_take_history_hint_alt_f
             modifier: alt
             keycode: char_f
             mode: emacs
@@ -804,14 +813,14 @@ $env.config = {
             event: { edit: deleteword }
         }
         {
-            name: delete_one_word_backward
+            name: delete_one_word_backward_alt_backspace_emacs
             modifier: alt
             keycode: backspace
             mode: emacs
             event: { edit: backspaceword }
         }
         {
-            name: delete_one_word_backward
+            name: delete_one_word_backward_alt_m
             modifier: alt
             keycode: char_m
             mode: emacs
@@ -890,34 +899,9 @@ def --env cx [arg] {
     ls -l
 }
 
-alias l = ls --all
-alias c = clear
-alias ll = ls -l
-alias lt = eza --tree --level=2 --long --icons --git
-alias v = nvim
-alias as = aerospace
-
 def ff [] {
     aerospace list-windows --all | fzf --bind 'enter:execute(bash -c "aerospace focus --window-id {1}")+abort'
 }
-
-
-# Git
-alias gc = git commit -m
-alias gca = git commit -a -m
-alias gp = git push origin HEAD
-alias gpu = git pull origin
-alias gst = git status
-alias glog = git log --graph --topo-order --pretty='%w(100,0,6)%C(yellow)%h%C(bold)%C(black)%d %C(cyan)%ar %C(green)%an%n%C(bold)%C(white)%s %N' --abbrev-commit
-alias gdiff = git diff
-alias gco = git checkout
-alias gb = git branch
-alias gba = git branch -a
-alias gadd = git add
-alias ga = git add -p
-alias gcoall = git checkout -- .
-alias gr = git remote
-alias gre = git reset
 
 source ~/.config/nushell/env.nu
 source ~/.zoxide.nu
@@ -926,3 +910,8 @@ source ~/.local/share/atuin/init.nu
 use ~/.cache/starship/init.nu
 
 def pr-squash [branch: string = "main"] { git fetch; git reset --mixed $"origin/($branch)"; git merge --squash HEAD@{1} };
+
+source ~/.config/nushell/pr-deploy.nu
+source ~/.config/nushell/stg-logs.nu
+source ~/.config/nushell/prod-logs.nu
+source ~/.config/nushell/fix-ci-runners.nu

@@ -16,6 +16,16 @@ zshrc/.zshrc.secrets
 
 # Claude Code local/machine state (permissions cache, not shareable config)
 claude/.claude/settings.local.json
+claude/.claude/projects
+claude/.claude/plugins
+claude/.claude/file-history
+claude/.claude/context-mode
+claude/.claude/cache
+claude/.claude/backups
+claude/.claude/paste-cache
+claude/.claude/telemetry
+claude/.claude/jobs
+claude/.claude/history.jsonl
 
 # Strix holds an LLM API key
 strix/.strix/cli-config.json
@@ -23,3 +33,20 @@ strix/.strix/cli-config.json
 # Rotating brew backups (local-only, regenerated daily)
 launchd/brew-backups/*
 !launchd/brew-backups/.gitkeep
+claude/.claude/.credentials.json
+claude/.claude/sessions
+claude/.claude/shell-snapshots
+claude/.claude/daemon
+claude/.claude/daemon-auth-*
+claude/.claude/state
+claude/.claude/feedback
+claude/.claude/policy-limits.json*
+claude/.claude/remote-settings.json*
+claude/.claude/mcp-needs-auth-cache.json
+claude/.claude/.caveman-*
+claude/.claude/.last-*
+claude/.claude/*.bak
+claude/.claude/skills/.trash
+.DS_Store
+.idea
+claude/.claude/skills/synced

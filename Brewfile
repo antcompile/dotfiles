@@ -1,41 +1,47 @@
 tap "aws/tap"
 tap "felixkratz/formulae"
-tap "homebrew/bundle"
-tap "homebrew/services"
 tap "jandedobbeleer/oh-my-posh"
 tap "leoafarias/fvm"
 tap "nikitabobko/tap"
 tap "romkatv/powerlevel10k"
+
+# ── Work tools (onboarding: https://legendary-barnacle-mvjkoye.pages.github.io/onboarding/) ──
+brew "bazelisk"                  # work — Bazel build system (repo uses bzlmod)
+brew "direnv"                    # work — env management; loads toolchain inside repo
+
+# ── Personal tools ──────────────────────────────────────────────────────────
 brew "atuin"
 brew "aws-sam-cli"
-brew "python@3.12"
 brew "awscli"
 brew "azure-cli"
-brew "glib"
 brew "cairo"
 brew "carapace"
 brew "cmatrix"
+brew "felixkratz/formulae/borders"
+brew "felixkratz/formulae/sketchybar"
 brew "fzf"
-brew "libevent"
-brew "p11-kit"
-brew "unbound"
+brew "glib"
 brew "gnutls"
 brew "go"
 brew "gobject-introspection"
 brew "guile"
 brew "harfbuzz"
+brew "harper"
 brew "herdr"
 brew "lazygit"
+brew "leoafarias/fvm/fvm"
 brew "libarchive"
 brew "libass"
+brew "libevent"
 brew "neovim"
 brew "node"
 brew "nushell"
 brew "oh-my-posh"
 brew "opencode"
-brew "openssl@1.1"
+brew "p11-kit"
 brew "powerlevel10k"
 brew "python@3.10"
+brew "python@3.12"
 brew "python@3.9"
 brew "ruby", link: true
 brew "rustup"
@@ -43,14 +49,22 @@ brew "srt"
 brew "starship"
 brew "stow"
 brew "tcl-tk"
-brew "terraform"
 brew "tesseract"
+brew "unbound"
 brew "wimlib"
 brew "wireguard-tools"
 brew "zoxide"
-brew "felixkratz/formulae/borders"
-brew "felixkratz/formulae/sketchybar"
-brew "leoafarias/fvm/fvm"
+
+# ── Work casks ──────────────────────────────────────────────────────────────
+cask "claude-code"               # work — AI coding agent
+cask "gcloud-cli"                # work — GCP CLI (brew version lacks some components; see onboarding note)
+cask "ghostty"                   # work — terminal emulator
+cask "gitbutler"                 # work — git client for simultaneous branch workflow
+cask "orbstack"                  # work — container runtime (replaces Podman/Docker)
+cask "raycast"                   # work — launcher
+cask "tailscale-app"             # work — VPN for internal network access
+
+# ── Personal casks ──────────────────────────────────────────────────────────
 cask "aerospace"
 cask "alt-tab"
 cask "android-platform-tools"
@@ -58,10 +72,13 @@ cask "fluor"
 cask "flutter"
 cask "font-hack-nerd-font"
 cask "font-sf-pro"
-cask "ghostty"
-cask "gitbutler"
+cask "meetingbar"                # next meeting title + countdown in menu bar
+cask "jordanbaird-ice"           # menu bar manager
 cask "sf-symbols"
 cask "tolaria"
+cask "visual-studio-code"
+
+# ── VSCode extensions ────────────────────────────────────────────────────────
 vscode "adrianwilczynski.namespace"
 vscode "aleksandardev.vscode-sequence-diagrams"
 vscode "bierner.markdown-mermaid"

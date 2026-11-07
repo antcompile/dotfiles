@@ -101,11 +101,12 @@ path add /run/current-system/sw/bin
 path add ($env.HOME | path join ".local" "bin")
 
 # Android SDK + JDK for React Native / Expo builds
-$env.ANDROID_HOME = ($env.HOME | path join "Library" "Android" "sdk")
-$env.JAVA_HOME = "/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+$env.ANDROID_HOME = "/opt/homebrew/share/android-commandlinetools"
+$env.JAVA_HOME = "/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home"
 path add $"($env.ANDROID_HOME)/emulator"
 path add $"($env.ANDROID_HOME)/platform-tools"
 path add $"($env.JAVA_HOME)/bin"
+path add $"($env.ANDROID_HOME)/cmdline-tools/latest/bin"
 
 # Cant use the home dir (~ or $HOME) here for some reason, hardcoding it...
 let home = $env.HOME
@@ -123,3 +124,7 @@ $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
 mkdir ($home | path join ".cache" "carapace")
 carapace _carapace nushell | save --force ($home | path join ".cache" "carapace" "init.nu")
 
+
+# flutter + pub global binaries
+path add ($env.HOME | path join ".pub-cache" "bin")
+path add ($env.HOME | path join "development" "flutter" "bin")

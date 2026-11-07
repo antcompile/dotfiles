@@ -52,3 +52,11 @@ export PATH=$PATH:$GOPATH/bin
 
 # dotnet
 export PATH="/usr/local/share/dotnet:$PATH"
+
+# flutter + pub global binaries
+export PATH="$HOME/development/flutter/bin:$HOME/.pub-cache/bin:$PATH"
+
+# android
+export JAVA_HOME="/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home"
+export ANDROID_HOME="/opt/homebrew/share/android-commandlinetools"
+export PATH="$JAVA_HOME/bin:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"

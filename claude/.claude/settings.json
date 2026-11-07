@@ -2,7 +2,12 @@
   "permissions": {
     "defaultMode": "auto"
   },
-  "model": "opus[1m]",
+  "model": "opus",
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "includeCoAuthoredBy": false,
   "skillOverrides": {
     "gitnexus-debugging": "off",
     "gitnexus-exploring": "off",
@@ -181,6 +186,11 @@
   "outputStyle": "Concise",
   "feedbackDrafts": "off",
   "effortLevel": "xhigh",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
   "tui": "fullscreen",
   "skipWorkflowUsageWarning": true,
   "theme": "dark",

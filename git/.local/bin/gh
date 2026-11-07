@@ -1,0 +1,15 @@
+#!/bin/sh
+real=/opt/homebrew/bin/gh
+if [ "$1" = auth ] || [ -n "$GH_TOKEN" ]; then
+  exec "$real" "$@"
+fi
+case "$(pwd -P)/" in
+  "$HOME/Git/perso/"*) user=antcompile ;;
+  *) user=anthony-bitstack ;;
+esac
+GH_TOKEN=$("$real" auth token --hostname github.com --user "$user" 2>/dev/null) || {
+  echo "gh: no login for $user. Run: gh auth login" >&2
+  exit 1
+}
+export GH_TOKEN
+exec "$real" "$@"

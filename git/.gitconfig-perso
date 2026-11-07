@@ -1,0 +1,8 @@
+[user]
+	email = 48224647+antcompile@users.noreply.github.com
+[credential "https://github.com"]
+	helper =
+	helper = !$HOME/.local/bin/git-credential-gh-user antcompile
+[credential "https://gist.github.com"]
+	helper =
+	helper = !$HOME/.local/bin/git-credential-gh-user antcompile

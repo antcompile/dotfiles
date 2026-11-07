@@ -16,6 +16,10 @@ stow --target="$HOME" zshrc
 # --no-folding so pi's runtime files (sessions, auth.json) stay out of the repo.
 stow --no-folding --target="$HOME" pi
 
+# Git + gh account routing: ~/Git/perso/** uses antcompile, everything else anthony-bitstack.
+# Needs both accounts logged in with `gh auth login`.
+stow --no-folding --target="$HOME" git
+
 # Install the daily brew update/backup launchd agent
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PLIST_DEST="$HOME/Library/LaunchAgents/com.atrad.brew-daily.plist"

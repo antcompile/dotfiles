@@ -1,0 +1,13 @@
+[user]
+	name = Anthony
+	email = anthonytrad@bitstack-app.com
+[credential "https://github.com"]
+	helper =
+	helper = !$HOME/.local/bin/git-credential-gh-user anthony-bitstack
+[credential "https://gist.github.com"]
+	helper =
+	helper = !$HOME/.local/bin/git-credential-gh-user anthony-bitstack
+[url "https://github.com/"]
+	insteadOf = git@github.com:
+[includeIf "gitdir:~/Git/perso/"]
+	path = ~/.gitconfig-perso

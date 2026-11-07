@@ -2,8 +2,71 @@
   "mcpServers": {
     "serena": {
       "command": "~/.local/bin/serena",
-      "args": ["start-mcp-server", "--context=agent", "--project-from-cwd"],
+      "args": [
+        "start-mcp-server",
+        "--context=agent",
+        "--project-from-cwd"
+      ],
       "description": "Semantic code navigation and editing (symbols, references, rename) via language servers"
+    },
+    "Linear": {
+      "url": "https://mcp.linear.app/mcp"
+    },
+    "DataDog": {
+      "url": "https://mcp.datadoghq.eu/api/unstable/mcp-server/mcp",
+      "description": "Datadog logs, metrics, traces, dashboards (EU site)"
+    },
+    "KubernetesStaging": {
+      "url": "https://k8s-mcp-staging.eland-goldeye.ts.net/mcp",
+      "description": "Kubernetes cluster access, staging (bitstack-2)"
+    },
+    "KubernetesProd": {
+      "url": "https://k8s-mcp.eland-goldeye.ts.net/mcp",
+      "description": "Kubernetes cluster access, production"
+    },
+    "Admin": {
+      "command": "bs",
+      "args": [
+        "admin",
+        "mcp",
+        "serve"
+      ],
+      "description": "Bitstack admin panel MCP, production",
+      "enabled": false
+    },
+    "AdminStaging": {
+      "command": "bs",
+      "args": [
+        "admin",
+        "mcp",
+        "serve",
+        "--client-id",
+        "464783322347-uu9rhao8nrnq0escqa4fbjdt20lecp1s.apps.googleusercontent.com",
+        "--endpoint",
+        "https://api.staging.bitstack-app.com/admin/mcp"
+      ],
+      "description": "Bitstack admin panel MCP, staging"
+    },
+    "AdminLocal": {
+      "command": "bs",
+      "args": [
+        "admin",
+        "mcp",
+        "serve",
+        "--client-id",
+        "464783322347-uu9rhao8nrnq0escqa4fbjdt20lecp1s.apps.googleusercontent.com",
+        "--endpoint",
+        "http://localhost:8080/admin/mcp"
+      ],
+      "description": "Bitstack admin panel MCP, local"
+    },
+    "Lightdash": {
+      "url": "https://lightdash.eland-goldeye.ts.net/api/v1/mcp",
+      "description": "Lightdash BI"
+    },
+    "Notion": {
+      "url": "https://mcp.notion.com/mcp",
+      "description": "Notion"
     }
   }
 }

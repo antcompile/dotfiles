@@ -3,7 +3,8 @@ real=/opt/homebrew/bin/gh
 if [ "$1" = auth ] || [ -n "$GH_TOKEN" ]; then
   exec "$real" "$@"
 fi
-case "$(pwd -P)/" in
+place=$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null || pwd -P)
+case "$(cd "$place" 2>/dev/null && pwd -P || echo "$place")/" in
   "$HOME/Git/perso/"*) user=antcompile ;;
   *) user=anthony-bitstack ;;
 esac
